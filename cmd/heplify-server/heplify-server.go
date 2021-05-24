@@ -25,6 +25,7 @@ type server interface {
 }
 
 func init() {
+	// do some configuration
 	var err error
 	var logging logp.Logging
 
