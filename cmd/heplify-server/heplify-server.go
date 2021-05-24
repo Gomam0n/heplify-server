@@ -111,7 +111,7 @@ func main() {
 		wg.Wait()
 		logp.Info("heplify-server has been stopped")
 	}
-
+	// default is none
 	if len(config.Setting.ConfigHTTPAddr) > 2 {
 		tmpl := template.Must(template.New("main").Parse(config.WebForm))
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -136,7 +136,7 @@ func main() {
 
 		go http.ListenAndServe(config.Setting.ConfigHTTPAddr, nil)
 	}
-
+	// default is ":9096"
 	if promAddr := config.Setting.PromAddr; len(promAddr) > 2 {
 		go func() {
 			http.Handle("/metrics", promhttp.Handler())
